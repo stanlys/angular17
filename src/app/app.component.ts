@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TG_TOKEN } from 'src/env';
 
 @Component({
   selector: 'app-root',
@@ -7,11 +8,18 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'angular17';
-  tests = [{
-    id: 1,
-    text: 'value 1'
-  },{
-    id:2,
-    text: 'value 2 '
-  }]
+  public tg_token = TG_TOKEN;
+
+  constructor() {}
+
+  tests = [
+    {
+      id: 1,
+      text: 'value 1',
+    },
+    {
+      id: 2,
+      text: 'value 2 ',
+    },
+  ];
 }
