@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { TG_TOKEN } from 'src/env';
+import { parse } from 'node-html-parser';
+import { RussiarunningService } from './services/russiarunning.service';
+import { CardsComponent } from './components/cards/cards.component';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +13,7 @@ export class AppComponent {
   title = 'angular17';
   public tg_token = TG_TOKEN;
 
-  constructor() {}
+  constructor(private rrS: RussiarunningService) {}
 
   tests = [
     {
@@ -22,4 +25,9 @@ export class AppComponent {
       text: 'value 2 ',
     },
   ];
+
+  public parse(): void {
+    this.rrS.getEventsPages();
+    this.rrS.getEventsList();
+  }
 }

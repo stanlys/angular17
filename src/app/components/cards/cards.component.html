@@ -1,0 +1,5 @@
+<div class="wrapper">
+  ppp @for (c of rrs.cards$ | async; track c.id) {
+  <app-card [card]="c"></app-card>
+  }
+</div>
