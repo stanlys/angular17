@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterContentInit, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RussiarunningService } from 'src/app/services/russiarunning.service';
 import { CardComponent } from './card/card.component';
@@ -10,6 +10,10 @@ import { CardComponent } from './card/card.component';
   templateUrl: './cards.component.html',
   styleUrl: './cards.component.scss',
 })
-export class CardsComponent {
+export class CardsComponent implements AfterContentInit {
   constructor(public rrs: RussiarunningService) {}
+
+  ngAfterContentInit(): void {
+    this.rrs.getEventsList();
+  }
 }

@@ -1,18 +1,5 @@
 <div>Angular 17 tests</div>
 
-@if (true) {
-<div>if</div>
-}@else {
-<div>else</div>
-}
-
-<hr />
-<ul>
-  @for (test of tests; track test.id) {
-  <li>{{ test.id }}: {{ test.text }}</li>
-  }
-</ul>
-
 <button (click)="parse()">Parse RussiaRunning</button>
 
 <hr />

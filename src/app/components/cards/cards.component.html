@@ -1,5 +1,13 @@
 <div class="wrapper">
-  ppp @for (c of rrs.cards$ | async; track c.id) {
+  @for (c of rrs.cards$ | async; track c.id) {
   <app-card [card]="c"></app-card>
   }
 </div>
+
+<!-- <div class="wrapper">
+  @defer (on hover) { @for (c of rrs.cards$ | async; track c.id) {
+  <app-card [card]="c"></app-card>
+  } } @placeholder {
+  <div>Calendar placeholder</div>
+  }
+</div> -->

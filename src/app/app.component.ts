@@ -1,19 +1,27 @@
-import { Component } from '@angular/core';
+import { AfterContentInit, Component, OnInit } from '@angular/core';
 import { TG_TOKEN } from 'src/env';
-import { parse } from 'node-html-parser';
 import { RussiarunningService } from './services/russiarunning.service';
-import { CardsComponent } from './components/cards/cards.component';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements AfterContentInit {
   title = 'angular17';
   public tg_token = TG_TOKEN;
 
   constructor(private rrS: RussiarunningService) {}
+
+  ngAfterContentInit(): void {
+    // console.log('after');
+    // this.rrS.getEventsList();
+  }
+
+  ngOnInit(): void {
+    // console.log('rrr');
+    // this.rrS.getEventsList();
+  }
 
   tests = [
     {
