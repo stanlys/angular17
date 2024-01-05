@@ -10,6 +10,23 @@ import { PAGE6 } from '../page6';
 import { PAGE5 } from '../page5';
 import { PAGE4 } from '../page4';
 import { PAGE3 } from '../page3';
+import * as dayjs from 'dayjs';
+
+const MONTHS = [
+  'января',
+  'февраля',
+  'марта',
+  'апреля',
+  'мая',
+  'июня',
+  'июля',
+  'августа',
+  'сентября',
+  'октября',
+  'ноября',
+  'декабря',
+];
+dayjs.locale('ru');
 
 @Injectable({
   providedIn: 'root',
@@ -48,7 +65,16 @@ export class RussiarunningService {
     const cardElements = r.querySelectorAll('.event-card__container');
     cardElements.forEach((c, i) => {
       const cardInfo = c.querySelectorAll('.event-card__info');
-      const date = c.querySelector('.event-card__header-col').text;
+      const dateStr = c.querySelector('.event-card__header-col').text;
+      let [day, month] = dateStr.split(` `);
+      day = day.split('–')[0];
+      console.log(dateStr.split(` `));
+      const monthIndex = MONTHS.findIndex((m) => m === month) || 0;
+      const dayy = dayjs()
+        .set('date', Number(day))
+        .set('month', monthIndex)
+        .format('DD - MM - YYYY');
+      console.log(dateStr, day, month);
       const event = c.querySelector('.event-card__name');
       const location = c.querySelector('.event-card__location').text;
       const img = c.querySelector('.event-card__cover-img');
@@ -56,7 +82,14 @@ export class RussiarunningService {
       imgUrl = imgUrl.startsWith('https') ? imgUrl : '';
       const title = event.text;
       const link = event.attributes['href'];
-      cards.push({ id: i, imgUrl, link, date, title, location });
+      cards.push({
+        id: i,
+        imgUrl,
+        link,
+        date: dayy,
+        title,
+        location,
+      });
     });
     this.cards$.next(cards);
     console.log(cards);

@@ -1,5 +1,9 @@
 <div class="card_wrapper">
-  <img [alt]="card.title" [src]="card.imgUrl" />
+  <img
+    [alt]="card.title"
+    [src]="card.imgUrl || 'assets/run.png'"
+    class="rounded-full"
+  />
   <h3>{{ card.title }}</h3>
   <p>{{ card.location }}</p>
   <p>{{ card.date }}</p>
