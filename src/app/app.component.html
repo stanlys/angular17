@@ -1,8 +1,14 @@
-<div class="flex items-center">
-  <div class="underline">Angular 17 tests</div>
-
+<!-- <div class="flex items-center gap-8">
+  <a routerLink="/">Home</a>
+  <a routerLink="calc"> Калькулятор темпа </a>
+  <a routerLink="starts"> Забеги </a>
+  <a routerLink="test"> test </a>
   <button (click)="parse()">Parse RussiaRunning</button>
-</div>
+</div> -->
 
+<app-header></app-header>
 <hr />
-<app-cards></app-cards>
+<!-- <app-cards></app-cards> -->
+<main class="h-dvh ">
+  <router-outlet></router-outlet>
+</main>
