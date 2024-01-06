@@ -1,4 +1,4 @@
-import { AfterContentInit, Component } from '@angular/core';
+import { AfterContentInit, ChangeDetectionStrategy, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RussiarunningService } from 'src/app/services/russiarunning.service';
 import { CardComponent } from './card/card.component';

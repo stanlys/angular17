@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { parse } from 'node-html-parser';
 import axios from 'axios';
 import { PAGE1 } from '../page1';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { PAGE2 } from '../page2';
 import { PAGE7 } from '../page7';
 import { PAGE6 } from '../page6';
@@ -32,7 +32,7 @@ dayjs.locale('ru');
   providedIn: 'root',
 })
 export class RussiarunningService {
-  public cards$ = new Subject<Array<ICard>>();
+  public cards$ = new BehaviorSubject<Array<ICard>>([]);
 
   constructor(private _http: HttpClient) {}
 

@@ -15,4 +15,8 @@ export class HeaderComponent {
   goCalc() {
     this.router.navigate(['calc']);
   }
+
+  goStarts() {
+    this.router.navigate(['starts']);
+  }
 }

@@ -1,4 +1,4 @@
-<div class="wrapper">
+<div class="wrapper m-3">
   @for (c of rrs.cards$ | async; track c.id) {
   <app-card [card]="c"></app-card>
   }
