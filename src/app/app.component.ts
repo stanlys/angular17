@@ -8,7 +8,7 @@ import { RussiarunningService } from './services/russiarunning.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements AfterContentInit {
-  title = 'angular17';
+  title = 'Буговой журнал';
   public tg_token = TG_TOKEN;
 
   constructor(private rrS: RussiarunningService) {}

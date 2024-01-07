@@ -68,7 +68,7 @@ export class RussiarunningService {
       const dateStr = c.querySelector('.event-card__header-col').text;
       let [day, month] = dateStr.split(` `);
       day = day.split('–')[0];
-      console.log(dateStr.split(` `));
+      // console.log(dateStr.split(` `));
       const monthIndex = MONTHS.findIndex((m) => m === month) || 0;
       const dayy = dayjs()
         .set('date', Number(day))

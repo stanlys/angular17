@@ -69,7 +69,7 @@ export class CalculatorComponent {
 
   private tempToSpeed(value: number): string {
     this.minPerKm = Math.floor(value);
-    this.secPerKm = value - Math.floor(value);
+    this.secPerKm = (value - Math.floor(value)) * 100;
     const _calculatedValue = 60 / value;
     const secPerKm = Math.floor(
       (_calculatedValue - Math.floor(_calculatedValue)) * 100
