@@ -1,4 +1,4 @@
-<div class="p-8 flex justify-center">
+<div class="p-8 flex flex-col items-center justify-center gap-4">
   <form [formGroup]="form">
     <div class="flex-col items-center gap-2 border w-min rounded shadow-lg">
       <div class="m-5">
@@ -31,7 +31,7 @@
           class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
           type="text"
           formControlName="value"
-          placeholder="Введите значение"
+          placeholder="Введите значение(разделитель системный)"
         />
         <div flex-none>
           @if (isError) {
@@ -54,4 +54,8 @@
       <p></p>
     </div>
   </form>
+  <div class="border w-min rounded shadow-lg">
+    @if (isShowCalculatedValue) {
+    <app-table [tempMin]="minPerKm" [tempSec]="secPerKm"></app-table>}
+  </div>
 </div>

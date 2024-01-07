@@ -10,6 +10,7 @@ import {
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { PredictTableComponent } from './table/table.component';
 
 @Component({
   selector: 'app-calculator',
@@ -22,6 +23,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatFormFieldModule,
     MatInputModule,
     MatIconModule,
+    PredictTableComponent,
   ],
   templateUrl: './calculator.component.html',
   styleUrl: './calculator.component.scss',
@@ -36,6 +38,9 @@ export class CalculatorComponent {
 
   public isShowCalculatedValue = false;
   public calculatedValue = '';
+
+  public minPerKm = 0;
+  public secPerKm = 0;
 
   public calc(): void {
     const typeConvert = Number(this.form.controls['typeConvert'].value) || 1;
@@ -57,10 +62,14 @@ export class CalculatorComponent {
       (_calculatedValue - Math.floor(_calculatedValue)) * 60
     );
     const minPerKm = Math.floor(_calculatedValue);
+    this.minPerKm = minPerKm;
+    this.secPerKm = secPerKm;
     return `Ваш темп ${minPerKm} мин ${secPerKm} сек`;
   }
 
   private tempToSpeed(value: number): string {
+    this.minPerKm = Math.floor(value);
+    this.secPerKm = value - Math.floor(value);
     const _calculatedValue = 60 / value;
     const secPerKm = Math.floor(
       (_calculatedValue - Math.floor(_calculatedValue)) * 100

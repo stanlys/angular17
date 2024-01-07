@@ -1,0 +1,21 @@
+<div class="w-auto p-5">
+  <table class="table-auto w-96 border-collapse border border-slate-500">
+    <caption class="caption-top">
+      Прогноз преодоления дистанции на основе введенных данных
+    </caption>
+    <thead>
+      <tr>
+        <th class="border border-slate-500">Расстояние (км)</th>
+        <th class="border border-slate-500">Время</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (km of kms; track $index) {
+      <tr class="text-center hover: text-sm">
+        <td class="border border-slate-500">{{ km }}</td>
+        <td class="border border-slate-500">{{ calcTimesByKm(km) }}</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

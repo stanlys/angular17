@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { parse } from 'node-html-parser';
 import axios from 'axios';
 import { PAGE1 } from '../page1';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { PAGE2 } from '../page2';
 import { PAGE7 } from '../page7';
 import { PAGE6 } from '../page6';
@@ -74,7 +74,6 @@ export class RussiarunningService {
         .set('date', Number(day))
         .set('month', monthIndex)
         .format('DD - MM - YYYY');
-      console.log(dateStr, day, month);
       const event = c.querySelector('.event-card__name');
       const location = c.querySelector('.event-card__location').text;
       const img = c.querySelector('.event-card__cover-img');
@@ -92,7 +91,6 @@ export class RussiarunningService {
       });
     });
     this.cards$.next(cards);
-    console.log(cards);
   }
 }
 
