@@ -1,61 +1,57 @@
-<div class="flex-col items-center gap-2">
-  <div class="m-5">
-    <div class="inline-block relative w-64">
-      <select
-        class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
-      >
-        <option value="1">Скорость в темп</option>
-        <option value="2">Темп в скорость</option>
-      </select>
-      <div
-        class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
-      >
-        <svg
-          class="fill-current h-4 w-4"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 20 20"
-        >
-          <path
-            d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
-          />
-        </svg>
-      </div>
-    </div>
-  </div>
+<div class="p-8 flex justify-center">
   <form [formGroup]="form">
-    <div class="m-5">
-      <div class="inline-block relative w-64">
+    <div class="flex-col items-center gap-2 border w-min rounded shadow-lg">
+      <div class="m-5">
+        <div class="inline-block relative w-64">
+          <select
+            formControlName="typeConvert"
+            class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+          >
+            <option value="1">Скорость в темп</option>
+            <option value="2">Темп в скорость</option>
+          </select>
+          <div
+            class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
+          >
+            <svg
+              class="fill-current h-4 w-4"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+            >
+              <path
+                d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <div class="m-5 flex-none">
         <input
           class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
           type="text"
           formControlName="value"
           placeholder="Введите значение"
         />
+        <div flex-none>
+          @if (isError) {
+          <span class="text-red-500 text-xs">Введите числовое значение</span>}
+        </div>
       </div>
-    </div>
-    <div class="m-5">
-      <div class="inline-block relative w-64">
-        <input
-          class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
-          type="number"
-          min="1"
-          max="100"
-          formControlName="degree"
-          placeholder="Укажите уклон в процентах"
-        />
+
+      <div class="m-5">
+        <div class="relative w-64 flex justify-center">
+          <button mat-raised-button (click)="calc()">Рассчитать</button>
+        </div>
       </div>
+      <div class="m-5">
+        <div class="relative w-64 flex justify-center">
+          @if (isShowCalculatedValue) {
+          <span class="font-medium">{{ calculatedValue }}</span
+          >}
+        </div>
+      </div>
+      <p></p>
     </div>
   </form>
-
-  <div class="m-5">
-    <div class="inline-block relative w-64">
-      <button mat-raised-button (click)="calc()">Рассчитать</button>
-    </div>
-  </div>
-  <p>@if (isError) { <span>Error</span>}</p>
-  <p>
-    @if (isShowCalculatedValue) {
-    <span>{{ calculatedValue }}</span
-    >}
-  </p>
 </div>
